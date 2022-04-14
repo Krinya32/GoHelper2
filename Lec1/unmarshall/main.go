@@ -15,7 +15,7 @@ type Users struct {
 }
 
 //Interval user representation
-//Second level of object JSON parsin
+//Second level of object JSON parsing
 type User struct {
 	Name   string `json:"name"`
 	Type   string `json:"type"`
