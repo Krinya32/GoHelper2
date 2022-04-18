@@ -103,7 +103,7 @@ func main() {
 	//1. Если на вход пришел запрос /pizzas
 	router.HandleFunc("/pizzas", GetAllPizzas).Methods("GET")
 	//2. Если на вход пришел запрос вида /pizza/{id}
-	router.HandleFunc("/pizza/{id}", GetPizzaById).Methods("GET")
+	router.HandleFunc("/pizzas/{id}", GetPizzaById).Methods("GET")
 	log.Println("Router configured successfully! Let's go!")
 	log.Fatal(http.ListenAndServe(":"+port, router))
 	// if err := http.ListenAndServe(":"+port, nil); err != nil {
