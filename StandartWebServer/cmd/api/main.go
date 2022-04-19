@@ -21,14 +21,27 @@ func main() {
 	log.Println("It's works")
 	//server instance initialization
 	config := api.NewConfig()
-	_, err := toml.DecodeFile(configPath, config) // Десериализация содержимого .toml файла
-	if err != nil {
-		log.Println("Can not find configs file, using default values:", err)
-	}
-	// Теперь тут надо попробовать прочитать из .toml/.env , так как там может быть новая информация
+	log.Println(config.LoggerLevel + " созданный log level")
+	log.Println(config.BindPort + " созданный BindArr")
+
+	//_, err := toml.DecodeFile(configPath, config) // Десериализация содержимого .toml файла
+	//if err != nil {
+	//	log.Println("Can not find configs file, using default values:", err)
+	//}
+
+	parseTomlFile(config)
+
+	log.Println(config.LoggerLevel + " спаршенный log level")
+	log.Println(config.BindPort + " спаршенный parseBindArr")
 	server := api.New(config)
 
 	//api server start
 	log.Fatal(server.Start())
+}
 
+func parseTomlFile(config *api.Config) {
+	_, err := toml.DecodeFile(configPath, config) // Десериализация содержимого .toml файла
+	if err != nil {
+		log.Println("Can not find configs file, using default values:", err)
+	}
 }

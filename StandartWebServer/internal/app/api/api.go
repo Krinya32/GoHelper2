@@ -16,6 +16,9 @@ type API struct {
 
 //API constructor: build base API instance
 func New(config *Config) *API {
+	//log.Println("Cоздаем сервер с конфигурацией:")
+	//log.Println("BinAddr: " + config.BindPort)
+	//log.Println("LogLevel: " + config.LoggerLevel)
 	return &API{
 		config: config,
 		logger: logrus.New(),
@@ -30,10 +33,11 @@ func (api *API) Start() error {
 		return err
 	}
 	//Подтверждение того что логгер сконфигурирован
-	api.logger.Info("Starting api server at port", api.config.BindAddr)
+	api.logger.Info("Starting api server at port", api.config.BindPort)
 
 	//Конфигурируем маршрутизатор
 	api.configureRouterField()
+
 	//На этапе валидного завершения стартуем http-сервер
-	return http.ListenAndServe(api.config.BindAddr, api.router)
+	return http.ListenAndServe(api.config.BindPort, api.router)
 }
