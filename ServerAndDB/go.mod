@@ -8,4 +8,8 @@ require (
 	github.com/sirupsen/logrus v1.8.1
 )
 
-require golang.org/x/sys v0.0.0-20220412211240-33da011f77ad // indirect
+require (
+	github.com/golang-migrate/migrate v3.5.4+incompatible // indirect
+	github.com/lib/pq v1.10.5 // indirect
+	golang.org/x/sys v0.0.0-20220412211240-33da011f77ad // indirect
+)

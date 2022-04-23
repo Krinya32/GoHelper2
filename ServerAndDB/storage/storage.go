@@ -2,12 +2,14 @@ package storage
 
 import (
 	"database/sql"
+	_ "github.com/lib/pq" // Для того чтобы отработала функция init
+	"log"
 )
 
 //Instance of storage
 type Storage struct {
 	config *Config
-	//DataBAse FileDescriptor
+	//DataBase FileDescriptor
 	db *sql.DB
 }
 
@@ -28,6 +30,7 @@ func (storage *Storage) Open() error {
 		return nil
 	}
 	storage.db = db
+	log.Println("Database connection created successfully")
 	return nil
 }
 

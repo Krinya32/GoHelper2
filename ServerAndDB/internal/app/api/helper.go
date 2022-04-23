@@ -29,11 +29,11 @@ func (a *API) configureRouterField() {
 
 //Пытаемся отконфигурировать наше хранилище (storage API)
 func (a *API) configureStorageField() error {
-	storageDb := storage.New(a.config.Storage)
+	storage := storage.New(a.config.Storage)
 	//Пытаемся установить соединение, если невозможно, то возвращаем ошибку
-	if err := storageDb.Open(); err != nil {
+	if err := storage.Open(); err != nil {
 		return err
 	}
-	a.storage = storageDb
+	a.storage = storage
 	return nil
 }
