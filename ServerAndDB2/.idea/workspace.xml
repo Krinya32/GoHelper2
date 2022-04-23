@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d2c4713-b4a3-4939-b0cf-16e6ed244ac6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../ServerAndDB/configs/api.toml" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerAndDB/configs/api.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerAndDB/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerAndDB/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerAndDB/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerAndDB/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerAndDB/internal/app/api/helper.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerAndDB/internal/app/api/helper.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServerAndDB/storage/storage.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerAndDB/storage/storage.go" afterDir="false" />
+    <list default="true" id="749afa91-f1cc-433b-b609-93a1b24eb0c0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../ServerAndDB/migrations/20220423092904_UsersCreationMigration.up.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/conspect.md" beforeDir="false" afterPath="$PROJECT_DIR$/conspect.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/20220423092904_UsersCreationMigration.down.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/20220423092904_UsersCreationMigration.up.sql" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,29 +23,67 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="28C7HOiRwV8cSZVlvBIHjarDFnS" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="28C8ROKTNRrAjJ9honFeOZkIj5i" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "go.import.settings.migrated": "true",
-    "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/home/vladimir"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.format.on.save.advertiser.fired&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/vladimir&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
+      &quot;PostgreSQL&quot;
+    ]
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="go build github.com/Krinya32/GoHelper2/ServerAndDB/cmd/api" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ServerAndDB2" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/Krinya32/GoHelper2/ServerAndDB/cmd/api" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/cmd/api/main.go" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build github.com/Krinya32/GoHelper2/ServerAndDB/cmd/api" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

@@ -1,84 +1,305 @@
-## Лекция 6. Подключение к БД и стандартные схемы миграции
+## Лекция 7. Работа с моделью
+
+### Шаг 0. Откат миграции
+Для выполнения отката ```migrate -path migrations -database "postgres://localhost:5432/restapi?sslmode=disable&user=postgres&password=postgres" down```
 
 
-### Шаг 0. Общие соображения
-* Определить модель данных (определить правило стыковки объекта в таблице вашей СУБД с объектом внутри языка) - как объект представлен в БД
-* Обработчики модели (модельные методы) - как объект взаимодействует с БД
-* Выделение публичных обработчиков и стыковка их с серверными запросами
-
-***Миграция*** - это процесс изменения схемы хранения данных. (положительный - upgrade / up миграция) (отрицательная downgrade /down миграция)
-
-***Data repository*** (репозиторий с обработчиками) - это и есть то место, где будут жить публичные обработчики (модельные методы).
-
-### Шаг 1. Библиотеки для работы с бд
-```database/sql```
-```sqlx```
-```gosql```
-
-### Шаг 2. Инициализация хранилища
-```storage/storage.go```
-Цель данного модуля определить:
-* инстанс хранилища
-* конструктор хранилища
-* публичный метод Open (установка соединения)
-* публичный метод Close (закрытие соединения)
-
-
-### Шаг 3. Инициализация Storage
-```storage.go```
-Главная проблема кроется внутри метода Open, т.к. по факту низкоуровневый sql.Open "ленивый" (устанавливает соединение с бд только в момент осуществления первого запрос)
-```config.go```
-Содержит инстанс конфига и конструктор. Атрибутом конфига является лишь строка подключения вида :
+### Шаг 1. Новая миграция
+Заходим в файл ```migrations/.....up.sql```
 ```
-"host=localhost port=5432 user=postgres password=postgres dbname=restapi sslmode=disable"
+CREATE TABLE users (
+    id bigserial not null primary key,
+    login varchar not null unique,
+    password varchar not null
+);
+
+CREATE TABLE articles (
+    id bigserial not null primary key,
+    title varchar not null unique,
+    author varchar not null,
+    content varchar not null
+);
 ```
 
-### Шаг 4. Добавление хранилища к API
-Добавим новый атрибут к API
+Выполним команду ```migrate -path migrations -database "postgres://localhost:5432/restapi?sslmode=disable&user=postgres&password=postgres" down```
+
+### Шаг 2. Определим модели
+Для того, чтобы определить модели ```internal/app/models/``` 2 модуля:
+* user.go
+* article.go
+
 ```
-//Base API server instance description
-type API struct {
-	//UNEXPORTED FIELD!
-	config *Config
-	logger *logrus.Logger
-	router *mux.Router
-	//Добавление поля для работы с хранилищем
-	storage *storage.Storage
+//user.go
+package models
+
+//User model defeniton
+type User struct {
+	ID       int    `json:"id"`
+	Login    string `json:"login"`
+	Password string `json:"password"`
 }
+
 ```
 
-Добавим новый конфиуратор:
 ```
-//Пытаемся отконфигурировать наше хранилище (storage API)
-func (a *API) configreStorageField() error {
-	storage := storage.New(a.config.Storage)
-	//Пытаемся установить соединениение, если невозможно - возвращаем ошибку!
-	if err := storage.Open(); err != nil {
-		return err
+//article.go
+package models
+
+//Article model defenition
+type Article struct {
+	ID      int    `json:"id"`
+	Title   string `json:"title"`
+	Author  string `json:"author"`
+	Content string `json:"content"`
+}
+
+```
+
+### Шаг 3. Определение "репозиториев"
+Работать с моделями будем через репозитории. Для этого инициализируем 2 файла:
+* ```storage/userrepository.go```
+* ```storage/articlerepository.go```
+
+```
+//articlerepository.go
+package storage
+
+//Instance of Article repository (model interface)
+type ArticleRepository struct {
+    storage *Storage
+}
+
+```
+
+Аналогично для юзера.
+
+### Шаг 4. Выделение публичного доступа к репозиторию
+Хотим, чтобы наше приложение общалось с моделями через репозитории (которые будут содержать необходимый набор метод для взаимодействия с бд). Нам необходимо определить 2 метода у хранилища , которые будут предоставлять публичные репозитории:
+```
+//storage.go
+
+//Instance of storage
+type Storage struct {
+	config *Config
+	// DataBase FileDescriptor
+	db *sql.DB
+	//Subfield for repo interfacing (model user)
+	userRepository *UserRepository
+	//Subfield for repo interfaceing (model article)
+	articleRepository *ArticleRepository
+}
+
+....
+
+//Public Repo for Article
+func (s *Storage) User() *UserRepository {
+	if s.userRepository != nil {
+		return s.userRepository
 	}
-	a.storage = storage
+	s.userRepository = &UserRepository{
+		storage: s,
+	}
+	return nil
+}
+
+//Public Repo for User
+func (s *Storage) Article() *ArticleRepository {
+	if s.articleRepository != nil {
+		return s.articleRepository
+	}
+	s.articleRepository = &ArticleRepository{
+		storage: s,
+	}
 	return nil
 }
 
 ```
 
-### Шаг 5. Первичная миграция
-Для начала установим ```scoop```
-* Открываем PowerShell: ```Set-ExecutionPolicy RemoteSigned -scope CurrentUser``` и ```Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')```
-
-* Для линукса/мака : https://github.com/golang-migrate/migrate/blob/master/cmd/migrate/README.md
-
-После установки ```scoop``` выполним: ```scoop install migrate```
-
-### 5.1 Создание миграционного репозитория
-В данном репозитории будут находится up/down пары sql миграционных запросов к бд.
+### Шаг 5. Что будет уметь делать UserRepo?
+* Сохранять нового пользователя в бд (INSERT user'a или Create)
+* Для аутентификации нужен функционал поиска пользователя по ```login```
+* Выдача всех пользователей из бд
 ```
-migrate create -ext sql -dir migrations UsersCreationMigration
+package storage
+
+import (
+	"fmt"
+	"log"
+
+	"github.com/vlasove/go2/7.ServerAndDB2/internal/app/models"
+)
+
+//Instance of User repository (model interface)
+type UserRepository struct {
+	storage *Storage
+}
+
+var (
+	tableUser string = "users"
+)
+
+//Create User in db
+func (ur *UserRepository) Create(u *models.User) (*models.User, error) {
+	query := fmt.Sprintf("INSERT INTO %s (login, password) VALUES ($1, $2) RETURNING id", tableUser)
+	if err := ur.storage.db.QueryRow(query, u.Login, u.Password).Scan(&u.ID); err != nil {
+		return nil, err
+	}
+	return u, nil
+}
+
+//Find user by login
+func (ur *UserRepository) FindByLogin(login string) (*models.User, bool, error) {
+	users, err := ur.SelectAll()
+	var founded bool
+	if err != nil {
+		return nil, founded, err
+	}
+	var userFinded *models.User
+	for _, u := range users {
+		if u.Login == login {
+			userFinded = u
+			founded = true
+			break
+		}
+	}
+	return userFinded, founded, nil
+}
+
+//Select all users in db
+func (ur *UserRepository) SelectAll() ([]*models.User, error) {
+	query := fmt.Sprintf("SELECT * FROM %s", tableUser)
+	rows, err := ur.storage.db.Query(query)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	//Подготовим, куда будем читать
+	users := make([]*models.User, 0)
+	for rows.Next() {
+		u := models.User{}
+		err := rows.Scan(&u.ID, &u.Login, &u.Password)
+		if err != nil {
+			log.Println(err)
+			continue
+		}
+		users = append(users, &u)
+	}
+	return users, nil
+}
+
 ```
 
-### 5.2 Создание up/down sql файлов
-См. ```migrations/....up.sql``` и ```migrations/...down.sql```
-
-### Шаг 5.3 Применить миграцию
+### Шаг 6. Что нужно от ArticleRepo?
+* Уметь доавлять статью в бд
+* Уметь удалять по id
+* Получать все статьи
+* Получать статью по id
+* Обновлять (дома)
 ```
-migrate -path migrations -da
+articlerepository.go
+package storage
+
+import (
+	"fmt"
+	"log"
+
+	"github.com/vlasove/go2/7.ServerAndDB2/internal/app/models"
+)
+
+//Instance of Article repository (model interface)
+type ArticleRepository struct {
+	storage *Storage
+}
+
+var (
+	tableArticle string = "articles"
+)
+
+//Добавить статью в бд
+func (ar *ArticleRepository) Create(a *models.Article) (*models.Article, error) {
+	query := fmt.Sprintf("INSERT INTO %s (title, author, content) VALUES ($1, $2, $3) RETURNING id", tableArticle)
+	if err := ar.storage.db.QueryRow(query, a.Title, a.Author, a.Content).Scan(&a.ID); err != nil {
+		return nil, err
+	}
+
+	return a, nil
+
+}
+
+//Удалять статью по id
+func (ar *ArticleRepository) DeleteById(id int) (*models.Article, error) {
+	article, ok, err := ar.FindArticleById(id)
+	if err != nil {
+		return nil, err
+	}
+	if ok {
+		query := fmt.Sprintf("DELETE FROM %s WHERE id=$1", tableArticle)
+		_, err := ar.storage.db.Exec(query, id)
+		if err != nil {
+			return nil, err
+		}
+	}
+	return article, nil
+}
+
+//Получаем статью по id
+func (ar *ArticleRepository) FindArticleById(id int) (*models.Article, bool, error) {
+	articles, err := ar.SelectAll()
+	var founded bool
+	if err != nil {
+		return nil, founded, err
+	}
+	var articleFinded *models.Article
+	for _, a := range articles {
+		if a.ID == id {
+			articleFinded = a
+			founded = true
+			break
+		}
+	}
+	return articleFinded, founded, nil
+}
+
+//Получим все статьи в бд
+func (ar *ArticleRepository) SelectAll() ([]*models.Article, error) {
+	query := fmt.Sprintf("SELECT * FROM %s", tableArticle)
+	rows, err := ar.storage.db.Query(query)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	//Подготовим, куда будем читать
+	articles := make([]*models.Article, 0)
+	for rows.Next() {
+		a := models.Article{}
+		err := rows.Scan(&a.ID, &a.Title, &a.Author, &a.Content)
+		if err != nil {
+			log.Println(err)
+			continue
+		}
+		articles = append(articles, &a)
+	}
+	return articles, nil
+}
+
+```
+
+### Шаг 7. Описание маршрутизатора для данного проекта.
+Зайдем в ```api```
+```
+//Пытаемся отконфигурировать маршрутизатор (а конкретнее поле router API)
+func (a *API) configreRouterField() {
+	a.router.HandleFunc(prefix+"/articles", a.GetAllArticles).Methods("GET")
+	a.router.HandleFunc(prefix+"/articles/{id}", a.GetArticleById).Methods("GET")
+	a.router.HandleFunc(prefix+"/articles/{id}", a.DeleteArticleById).Methods("DELETE")
+	a.router.HandleFunc(prefix+"/articles", a.PostArticle).Methods("POST")
+	a.router.HandleFunc(prefix+"/user/register", a.PostUserRegister).Methods("POST")
+
+}
+```
+
+Создадим файл ```internal/app/api/handlers.go```
+```
+```
