@@ -3,9 +3,8 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.38">
     <root id="1">
       <DateStyle>dmy</DateStyle>
-      <IntrospectionStateNumber>531</IntrospectionStateNumber>
       <ServerVersion>13.5</ServerVersion>
-      <StartupTime>1650718810</StartupTime>
+      <StartupTime>1651162472</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -1398,7 +1397,6 @@ true posixrules
 13199||10|C|G
 13199||-9223372036854775808|U|G
 13199||10|U|G</Grants>
-      <IntrospectionStateNumber>526</IntrospectionStateNumber>
       <ObjectId>13483</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -1413,41 +1411,19 @@ true posixrules
 13199||10|C|G
 13199||-9223372036854775808|U|G
 13199||10|U|G</Grants>
-      <IntrospectionStateNumber>532</IntrospectionStateNumber>
       <ObjectId>16427</ObjectId>
-      <Relations>sequence|table|16588|16590|1
-sequence|table|16601|16603|1
+      <Relations>sequence|table|16711|16713|1
+sequence|table|16724|16726|1
 </Relations>
       <OwnerName>postgres</OwnerName>
     </database>
-    <role id="4" parent="1" name="pg_execute_server_program">
-      <ObjectId>4571</ObjectId>
-    </role>
-    <role id="5" parent="1" name="pg_monitor">
-      <ObjectId>3373</ObjectId>
-      <RoleGrants>3374
-3375
-3377</RoleGrants>
-    </role>
-    <role id="6" parent="1" name="pg_read_all_settings">
-      <ObjectId>3374</ObjectId>
-    </role>
-    <role id="7" parent="1" name="pg_read_all_stats">
-      <ObjectId>3375</ObjectId>
-    </role>
-    <role id="8" parent="1" name="pg_read_server_files">
-      <ObjectId>4569</ObjectId>
-    </role>
-    <role id="9" parent="1" name="pg_signal_backend">
+    <role id="4" parent="1" name="pg_signal_backend">
       <ObjectId>4200</ObjectId>
     </role>
-    <role id="10" parent="1" name="pg_stat_scan_tables">
-      <ObjectId>3377</ObjectId>
+    <role id="5" parent="1" name="pg_read_server_files">
+      <ObjectId>4569</ObjectId>
     </role>
-    <role id="11" parent="1" name="pg_write_server_files">
-      <ObjectId>4570</ObjectId>
-    </role>
-    <role id="12" parent="1" name="postgres">
+    <role id="6" parent="1" name="postgres">
       <BypassRls>1</BypassRls>
       <CanLogin>1</CanLogin>
       <CreateDb>1</CreateDb>
@@ -1456,12 +1432,33 @@ sequence|table|16601|16603|1
       <Replication>1</Replication>
       <SuperRole>1</SuperRole>
     </role>
-    <role id="13" parent="1" name="root">
+    <role id="7" parent="1" name="pg_write_server_files">
+      <ObjectId>4570</ObjectId>
+    </role>
+    <role id="8" parent="1" name="pg_execute_server_program">
+      <ObjectId>4571</ObjectId>
+    </role>
+    <role id="9" parent="1" name="pg_read_all_stats">
+      <ObjectId>3375</ObjectId>
+    </role>
+    <role id="10" parent="1" name="pg_monitor">
+      <ObjectId>3373</ObjectId>
+      <RoleGrants>3374
+3375
+3377</RoleGrants>
+    </role>
+    <role id="11" parent="1" name="root">
       <CanLogin>1</CanLogin>
       <CreateDb>1</CreateDb>
       <CreateRole>1</CreateRole>
       <ObjectId>16384</ObjectId>
       <SuperRole>1</SuperRole>
+    </role>
+    <role id="12" parent="1" name="pg_read_all_settings">
+      <ObjectId>3374</ObjectId>
+    </role>
+    <role id="13" parent="1" name="pg_stat_scan_tables">
+      <ObjectId>3377</ObjectId>
     </role>
     <tablespace id="14" parent="1" name="pg_default">
       <ObjectId>1663</ObjectId>
@@ -4745,7 +4742,6 @@ sequence|table|16601|16603|1
     <schema id="254" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>526</IntrospectionStateNumber>
       <ObjectId>2200</ObjectId>
       <StateNumber>286</StateNumber>
       <OwnerName>postgres</OwnerName>
@@ -8022,7 +8018,6 @@ sequence|table|16601|16603|1
     <schema id="493" parent="3" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>532</IntrospectionStateNumber>
       <ObjectId>2200</ObjectId>
       <StateNumber>286</StateNumber>
       <OwnerName>postgres</OwnerName>
@@ -8035,60 +8030,54 @@ sequence|table|16601|16603|1
     </table>
     <sequence id="495" parent="493" name="articles_id_seq">
       <DataType>bigint|0s</DataType>
-      <ObjectId>16601</ObjectId>
-      <StateNumber>560</StateNumber>
+      <ObjectId>16724</ObjectId>
+      <StateNumber>610</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="496" parent="493" name="users_id_seq">
       <DataType>bigint|0s</DataType>
-      <ObjectId>16588</ObjectId>
-      <StateNumber>560</StateNumber>
+      <ObjectId>16711</ObjectId>
+      <StateNumber>610</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <table id="497" parent="493" name="articles">
-      <ObjectId>16603</ObjectId>
-      <StateNumber>560</StateNumber>
+      <ObjectId>16726</ObjectId>
+      <StateNumber>610</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="498" parent="493" name="schema_migrations">
       <ObjectId>16428</ObjectId>
-      <StateNumber>574</StateNumber>
+      <StateNumber>611</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="499" parent="493" name="sms">
-      <ObjectId>16630</ObjectId>
-      <StateNumber>573</StateNumber>
+    <table id="499" parent="493" name="users">
+      <ObjectId>16713</ObjectId>
+      <StateNumber>610</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="500" parent="493" name="users">
-      <ObjectId>16590</ObjectId>
-      <StateNumber>570</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-      <OwnerName>postgres</OwnerName>
-    </table>
-    <column id="501" parent="494" name="id">
+    <column id="500" parent="494" name="id">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>490</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="502" parent="494" name="name">
+    <column id="501" parent="494" name="name">
       <DataType>varchar|0s</DataType>
       <Position>2</Position>
       <StateNumber>490</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="503" parent="494" name="price">
+    <column id="502" parent="494" name="price">
       <DataType>double precision|0s</DataType>
       <Position>3</Position>
       <StateNumber>490</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <index id="504" parent="494" name="pizzas_pk">
+    <index id="503" parent="494" name="pizzas_pk">
       <ColNames>id</ColNames>
       <ObjectId>16391</ObjectId>
       <Primary>1</Primary>
@@ -8096,101 +8085,101 @@ sequence|table|16601|16603|1
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="505" parent="494" name="pizzas_pk">
+    <key id="504" parent="494" name="pizzas_pk">
       <ColNames>id</ColNames>
       <ObjectId>16392</ObjectId>
       <Primary>1</Primary>
       <StateNumber>490</StateNumber>
       <UnderlyingIndexId>16391</UnderlyingIndexId>
     </key>
-    <column id="506" parent="497" name="id">
+    <column id="505" parent="497" name="id">
       <DataType>bigint|0s</DataType>
       <DefaultExpression>nextval(&apos;articles_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>560</StateNumber>
+      <StateNumber>610</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="507" parent="497" name="title">
+    <column id="506" parent="497" name="title">
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>560</StateNumber>
+      <StateNumber>610</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="508" parent="497" name="author">
+    <column id="507" parent="497" name="author">
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>560</StateNumber>
+      <StateNumber>610</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="509" parent="497" name="content">
+    <column id="508" parent="497" name="content">
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>560</StateNumber>
+      <StateNumber>610</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="510" parent="497" name="articles_pkey">
+    <index id="509" parent="497" name="articles_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16610</ObjectId>
+      <ObjectId>16733</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>560</StateNumber>
+      <StateNumber>610</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="511" parent="497" name="articles_title_key">
+    <index id="510" parent="497" name="articles_title_key">
       <ColNames>title</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16612</ObjectId>
-      <StateNumber>560</StateNumber>
+      <ObjectId>16735</ObjectId>
+      <StateNumber>610</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="512" parent="497" name="articles_pkey">
+    <key id="511" parent="497" name="articles_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16611</ObjectId>
+      <ObjectId>16734</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>560</StateNumber>
-      <UnderlyingIndexId>16610</UnderlyingIndexId>
+      <StateNumber>610</StateNumber>
+      <UnderlyingIndexId>16733</UnderlyingIndexId>
     </key>
-    <key id="513" parent="497" name="articles_title_key">
+    <key id="512" parent="497" name="articles_title_key">
       <ColNames>title</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16613</ObjectId>
-      <StateNumber>560</StateNumber>
-      <UnderlyingIndexId>16612</UnderlyingIndexId>
+      <ObjectId>16736</ObjectId>
+      <StateNumber>610</StateNumber>
+      <UnderlyingIndexId>16735</UnderlyingIndexId>
     </key>
-    <column id="514" parent="498" name="version">
+    <column id="513" parent="498" name="version">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>511</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="515" parent="498" name="dirty">
+    <column id="514" parent="498" name="dirty">
       <DataType>boolean|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>511</StateNumber>
       <TypeId>16</TypeId>
     </column>
-    <index id="516" parent="498" name="schema_migrations_pkey">
+    <index id="515" parent="498" name="schema_migrations_pkey">
       <ColNames>version</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16431</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>574</StateNumber>
+      <StateNumber>611</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="517" parent="498" name="schema_migrations_pkey">
+    <key id="516" parent="498" name="schema_migrations_pkey">
       <ColNames>version</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16432</ObjectId>
@@ -8198,101 +8187,62 @@ sequence|table|16601|16603|1
       <StateNumber>511</StateNumber>
       <UnderlyingIndexId>16431</UnderlyingIndexId>
     </key>
-    <column id="518" parent="499" name="id">
-      <DataType>bigint|0s</DataType>
-      <Position>1</Position>
-      <StateNumber>573</StateNumber>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="519" parent="499" name="text">
-      <DataType>text|0s</DataType>
-      <DefaultExpression>&apos;Test text&apos;::text</DefaultExpression>
-      <Position>2</Position>
-      <StateNumber>573</StateNumber>
-      <TypeId>25</TypeId>
-    </column>
-    <column id="520" parent="499" name="receiver">
-      <DataType>bigint|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StateNumber>573</StateNumber>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="521" parent="499" name="sender">
-      <DataType>bigint|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-      <StateNumber>573</StateNumber>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="522" parent="500" name="id">
+    <column id="517" parent="499" name="id">
       <DataType>bigint|0s</DataType>
       <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>560</StateNumber>
+      <StateNumber>610</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="523" parent="500" name="login">
+    <column id="518" parent="499" name="login">
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>560</StateNumber>
+      <StateNumber>610</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="524" parent="500" name="password">
+    <column id="519" parent="499" name="password">
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>560</StateNumber>
+      <StateNumber>610</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="525" parent="500" name="phone">
-      <DataType>bigint|0s</DataType>
-      <Position>6</Position>
-      <StateNumber>570</StateNumber>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="526" parent="500" name="email">
-      <DataType>varchar|0s</DataType>
-      <Position>7</Position>
-      <StateNumber>570</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <index id="527" parent="500" name="users_pkey">
+    <index id="520" parent="499" name="users_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16597</ObjectId>
+      <ObjectId>16720</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>560</StateNumber>
+      <StateNumber>610</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="528" parent="500" name="users_login_key">
+    <index id="521" parent="499" name="users_login_key">
       <ColNames>login</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16599</ObjectId>
-      <StateNumber>560</StateNumber>
+      <ObjectId>16722</ObjectId>
+      <StateNumber>610</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="529" parent="500" name="users_pkey">
+    <key id="522" parent="499" name="users_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16598</ObjectId>
+      <ObjectId>16721</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>560</StateNumber>
-      <UnderlyingIndexId>16597</UnderlyingIndexId>
+      <StateNumber>610</StateNumber>
+      <UnderlyingIndexId>16720</UnderlyingIndexId>
     </key>
-    <key id="530" parent="500" name="users_login_key">
+    <key id="523" parent="499" name="users_login_key">
       <ColNames>login</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16600</ObjectId>
-      <StateNumber>560</StateNumber>
-      <UnderlyingIndexId>16599</UnderlyingIndexId>
+      <ObjectId>16723</ObjectId>
+      <StateNumber>610</StateNumber>
+      <UnderlyingIndexId>16722</UnderlyingIndexId>
     </key>
   </database-model>
 </dataSource>

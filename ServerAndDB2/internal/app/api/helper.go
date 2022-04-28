@@ -3,7 +3,10 @@ package api
 import (
 	"github.com/Krinya32/GoHelper2/ServerAndDB/storage"
 	"github.com/sirupsen/logrus"
-	"net/http"
+)
+
+var (
+	prefix string = "api/v1"
 )
 
 //Пытаемся отконфигурировать наш API instance (а конкретнее поле Logger)
@@ -18,13 +21,12 @@ func (a *API) configureLoggerField() error {
 
 //Пытаемся отконфигурировать маршрутизатор (а конкретнее поле router API)
 func (a *API) configureRouterField() {
-	a.router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello! this is rest api!"))
-	})
+	a.router.HandleFunc(prefix+"/articles", a.GetAllArticles).Methods("GET")
+	a.router.HandleFunc(prefix+"/articles/{id}", a.GetArticleById).Methods("GET")
+	a.router.HandleFunc(prefix+"/articles/{id}", a.DeleteArticleById).Methods("DELETE")
+	a.router.HandleFunc(prefix+"/articles", a.PostArticle).Methods("POST")
+	a.router.HandleFunc(prefix+"/user/register", a.PostUserRegister).Methods("POST")
 
-	a.router.HandleFunc("/bars", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello! I am BUSINKA!"))
-	})
 }
 
 //Пытаемся отконфигурировать наше хранилище (storage API)
