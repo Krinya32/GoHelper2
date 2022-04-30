@@ -1,7 +1,7 @@
 package api
 
 import (
-	"github.com/Krinya32/GoHelper2/ServerAndDB/storage"
+	"github.com/Krinya32/GoHelper2/ServerAndDB2/storage"
 	"github.com/sirupsen/logrus"
 )
 

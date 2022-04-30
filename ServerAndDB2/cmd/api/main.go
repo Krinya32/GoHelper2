@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"github.com/BurntSushi/toml"
-	"github.com/Krinya32/GoHelper2/ServerAndDB/internal/app/api"
+	"github.com/Krinya32/GoHelper2/ServerAndDB2/internal/app/api"
 	"log"
 )
 

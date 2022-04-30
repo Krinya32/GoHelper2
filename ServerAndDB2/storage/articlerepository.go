@@ -2,7 +2,7 @@ package storage
 
 import (
 	"fmt"
-	"github.com/Krinya32/GoHelper2/ServerAndDB/internal/app/models"
+	"github.com/Krinya32/GoHelper2/ServerAndDB2/internal/app/models"
 	"log"
 )
 

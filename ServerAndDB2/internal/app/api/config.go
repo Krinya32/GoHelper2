@@ -1,6 +1,6 @@
 package api
 
-import "github.com/Krinya32/GoHelper2/ServerAndDB/storage"
+import "github.com/Krinya32/GoHelper2/ServerAndDB2/storage"
 
 //General instance for API server of REST application
 type Config struct {

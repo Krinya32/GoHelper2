@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="749afa91-f1cc-433b-b609-93a1b24eb0c0" name="Changes" comment="work in migration, create new!">
-      <change afterPath="$PROJECT_DIR$/internal/app/models/article.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/app/models/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/articlerepository.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/userrepository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8026a160-91c9-4912-a126-d0fcf6bc8a3e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8026a160-91c9-4912-a126-d0fcf6bc8a3e.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8026a160-91c9-4912-a126-d0fcf6bc8a3e/storage_v2/_src_/database/restapi.xp1qQQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8026a160-91c9-4912-a126-d0fcf6bc8a3e/storage_v2/_src_/database/restapi.xp1qQQ/schema/public.abK9xQ.meta" afterDir="false" />
+    <list default="true" id="749afa91-f1cc-433b-b609-93a1b24eb0c0" name="Changes" comment="work repo for db, have bugs">
+      <change afterPath="$PROJECT_DIR$/conspect2.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conspect.md" beforeDir="false" afterPath="$PROJECT_DIR$/conspect.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/app/api/helper.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/api/helper.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/storage.go" beforeDir="false" afterPath="$PROJECT_DIR$/storage/storage.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conspect.md" beforeDir="false" afterPath="$PROJECT_DIR$/conspect1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/app/api/handlers.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/api/handlers.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +52,7 @@
     "go.sdk.automatically.set": "true",
     "last_opened_file_path": "/home/vladimir",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.tabs"
+    "settings.editor.selected.configurable": "preferences.keymap"
   },
   "keyToStringList": {
     "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
@@ -113,7 +107,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="work in migration, create new!" />
-    <option name="LAST_COMMIT_MESSAGE" value="work in migration, create new!" />
+    <MESSAGE value="work repo for db, have bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="work repo for db, have bugs" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

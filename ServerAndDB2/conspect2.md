@@ -1,10 +1,15 @@
+## Лекция 8. Реализация обработчиков
+
+Из-за того, что пока у ```users``` всего один обработчик, будет держать все handlers в одном месте :
+```
+internal/app/api/handlers.go
+```
+
+Внутри определим 2 сущности:
+```
 package api
 
-//full API handlers initialization
-import (
-	"encoding/json"
-	"net/http"
-)
+import "net/http"
 
 //Вспомогательная структура для формирования сообщений
 type Message struct {
@@ -17,12 +22,16 @@ func initHeaders(writer http.ResponseWriter) {
 	writer.Header().Set("Content-Type", "application/json")
 }
 
+```
+
+### Шаг 1. Реализация обработчика GetAllArticles
+```
 //Возвращает все статьи из бд на данный момент
 func (api *API) GetAllArticles(writer http.ResponseWriter, req *http.Request) {
 	//Инициализируем хедеры
 	initHeaders(writer)
 	//Логируем момент начало обработки запроса
-	api.logger.Info("Get All Articles GET /api/v1/articles")
+	api.logger.Info("Get All Artiles GET /api/v1/articles")
 	//Пытаемся что-то получить от бд
 	articles, err := api.storage.Article().SelectAll()
 	if err != nil {
@@ -40,18 +49,4 @@ func (api *API) GetAllArticles(writer http.ResponseWriter, req *http.Request) {
 	writer.WriteHeader(200)
 	json.NewEncoder(writer).Encode(articles)
 }
-
-func (api *API) GetArticleById(writer http.ResponseWriter, req *http.Request) {
-
-}
-
-func (api *API) DeleteArticleById(writer http.ResponseWriter, req *http.Request) {
-
-}
-func (api *API) PostArticle(writer http.ResponseWriter, req *http.Request) {
-
-}
-
-func (api *API) PostUserRegister(writer http.ResponseWriter, req *http.Request) {
-
-}
+```
